@@ -56,6 +56,7 @@ def _mirror_dungeons_visible(take_screenshot=False):
     return bool(
         auto.find_element("home/mirror_dungeons_assets.png", take_screenshot=take_screenshot)
         or auto.find_element("home/mirror_dungeons_event_assets.png")
+        or auto.find_element("home/mirror_dungeons_event2_assets.png")
     )
 
 class Mirror:
@@ -185,6 +186,9 @@ class Mirror:
             # 旧位置认不到时按活动布局再找一次
             if auto.click_element("home/mirror_dungeons_event_assets.png"):
                 log.debug("按活动页面布局点击镜牢入口")
+                continue
+            if auto.click_element("home/mirror_dungeons_event2_assets.png"):
+                log.debug("按活动页面布局2点击镜牢入口")
                 continue
             if auto.find_element("home/inferno_bus_assets.png") and not _mirror_dungeons_visible():
                 sleep(1)
